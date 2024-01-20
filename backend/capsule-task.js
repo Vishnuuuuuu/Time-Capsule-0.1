@@ -75,7 +75,7 @@ async function processCapsules() {
 
 
 // Scheduled job running every day at 12 AM
-cron.schedule('* * * * *', () => {
+cron.schedule('0 0 * * *', () => {
   console.log('Running capsule task scheduler...');
   processCapsules();
 });
