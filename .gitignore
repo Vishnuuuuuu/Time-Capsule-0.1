@@ -8,6 +8,12 @@
 # testing
 /coverage
 
+#sensitive info
+/node_modules
+.env
+/firebase-adminsdk.json
+
+
 # production
 /build
 

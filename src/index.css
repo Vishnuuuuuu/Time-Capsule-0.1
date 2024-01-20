@@ -1,28 +1,100 @@
-*{
+/* Reset and box-sizing */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-span{
-  display: block;
-}
-
-.center {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Body styling */
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f4f4; /* Light grey background */
+  color: #333; /* Dark grey text */
+  font-size: 16px; /* Increased base font size for desktop readability */
 }
 
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 20px 0; /* Add bottom margin for spacing */
+  color: #333;
+  font-weight: 600; /* Bolder headings */
+}
+
+h1 { font-size: 2.5em; } /* Larger heading sizes */
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+p {
+  margin: 0 0 20px 0; /* Add bottom margin for paragraph spacing */
+  line-height: 1.6; /* Slightly increased line height for readability */
+}
+
+/* Centering content */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Links */
+a {
+  color: #007bff; /* Bootstrap primary color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Code styling */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  background-color: #eee; /* Light background for code */
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+/* Additional global styles */
+.container {
+  width: 95%;
+  max-width: 1400px; /* Wider max width for larger screens */
+  margin: 0 auto;
+  padding: 40px; /* More padding for larger containers */
+}
+
+/* Span block styling */
+span {
+  display: block;
+}
+
+/* Card styling */
+.card {
+  background-color: white;
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 5px;
+  padding: 30px; /* More padding inside cards */
+  margin-bottom: 30px; /* Increased bottom margin */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Slightly stronger shadow for depth */
+}
+
+/* Profile icon */
+.profile-icon {
+  cursor: pointer;
+  font-size: 28px; /* Slightly larger icons */
 }

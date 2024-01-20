@@ -1,39 +1,37 @@
-import {useState} from 'react'
-import { Link } from 'react-router-dom'
-import './forms.css'
-import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
-import {auth} from './firebase'
-import {useNavigate} from 'react-router-dom'
-import {useAuthValue} from './AuthContext'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './forms.css';
+import { signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { auth } from './firebase';
+import { useNavigate } from 'react-router-dom';
+import { useAuthValue } from './AuthContext';
 
-
-function Login(){
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('') 
-  const [error, setError] = useState('')
-  const {setTimeActive} = useAuthValue()
-  const navigate = useNavigate()
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState(''); 
+  const [error, setError] = useState('');
+  const { setTimeActive } = useAuthValue();
+  const navigate = useNavigate();
 
   const login = e => {
-    e.preventDefault()
+    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      if(!auth.currentUser.emailVerified) {
-        sendEmailVerification(auth.currentUser)
-        .then(() => {
-          setTimeActive(true)
-          navigate('/verify-email')
-        })
-      .catch(err => alert(err.message))
-    }else{
-      navigate('/')
-    }
-    })
-    .catch(err => setError(err.message))
-  }
+      .then(() => {
+        if (!auth.currentUser.emailVerified) {
+          sendEmailVerification(auth.currentUser)
+            .then(() => {
+              setTimeActive(true);
+              navigate('/verify-email');
+            })
+            .catch(err => setError(err.message));
+        } else {
+          navigate('/dashboard'); // Redirects to Dashboard upon successful login
+        }
+      })
+      .catch(err => setError(err.message));
+  };
 
-  return(
+  return (
     <div className='center'>
       <div className='auth'>
         <h1>Log in</h1>
@@ -56,12 +54,12 @@ function Login(){
           <button type='submit'>Login</button>
         </form>
         <p>
-          Don't have and account? 
+          Don't have an account? 
           <Link to='/register'>Create one here</Link>
         </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

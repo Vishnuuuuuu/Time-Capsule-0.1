@@ -1,0 +1,27 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .capsule {
+    text-align: center;
+  }
+  
+  .capsule input[type="file"],
+  .capsule input[type="date"] {
+    margin-top: 10px;
+  }
+  
+  .capsule button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  

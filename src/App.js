@@ -1,34 +1,36 @@
 import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Profile from './Profile'
-import Register from './Register'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Profile from './Profile';
+import Register from './Register';
 import VerifyEmail from './VerifyEmail';
-import Login from './Login'
-import {useState, useEffect} from 'react'
-import {AuthProvider} from './AuthContext'
-import {auth} from './firebase'
-import {onAuthStateChanged} from 'firebase/auth'
-import PrivateRoute from './PrivateRoute'
-import {Navigate} from 'react-router-dom'
+import Login from './Login';
+import Dashboard from './dashboard';  // Make sure this is correctly imported
+import Capsule from './capsule';  // Import Capsule component
+import CapsuleList from './capsule-list';  // Import CapsuleList component
+import { useState, useEffect } from 'react';
+import { AuthProvider } from './AuthContext';
+import { auth } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import PrivateRoute from './PrivateRoute';
+import { Navigate } from 'react-router-dom';
 
 function App() {
-
-  const [currentUser, setCurrentUser] = useState(null)
-  const [timeActive, setTimeActive] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [timeActive, setTimeActive] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
-    })
-  }, [])
+      setCurrentUser(user);
+    });
+  }, []);
 
   return (
     <Router>
-      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
+      <AuthProvider value={{ currentUser, timeActive, setTimeActive }}>
         <Routes>
           <Route exact path='/' element={
             <PrivateRoute>
-              <Profile/>
+              <Dashboard />
             </PrivateRoute>
           }/>
           <Route path="/login" element={
@@ -42,9 +44,24 @@ function App() {
             : <Navigate to='/' replace/>
           } />
           <Route path='/verify-email' element={<VerifyEmail/>} /> 
+          <Route path="/profile" element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          } />
+          <Route path="/capsule" element={
+            <PrivateRoute>
+              <Capsule />  // Route for the Capsule component
+            </PrivateRoute>
+          } />
+          <Route path="/capsule-list" element={
+            <PrivateRoute>
+              <CapsuleList />  // Route for the CapsuleList component
+            </PrivateRoute>
+          } />
         </Routes>  
       </AuthProvider>
-  </Router>
+    </Router>
   );
 }
 
