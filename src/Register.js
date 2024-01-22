@@ -1,86 +1,85 @@
-import {useState} from 'react'
-import './forms.css'
-import {auth} from './firebase'
-import {useNavigate, Link} from 'react-router-dom'
-import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
-import {useAuthValue} from './AuthContext'
+import React, { useState } from 'react';
+import './Register.css'; // Ensure this CSS file exists and is styled as needed
+import { auth } from './firebase';
+import { useNavigate, Link } from 'react-router-dom';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 
 function Register() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
-  const navigate = useNavigate()
-  const {setTimeActive} = useAuthValue()
-
-  const validatePassword = () => {
-    let isValid = true
-    if (password !== '' && confirmPassword !== ''){
-      if (password !== confirmPassword) {
-        isValid = false
-        setError('Passwords does not match')
-      }
+  const register = (e) => {
+    e.preventDefault();
+    setError('');
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
     }
-    return isValid
-  }
-
-  const register = e => {
-    e.preventDefault()
-    setError('')
-    if(validatePassword()) {
-      // Create a new user with email and password using firebase
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          sendEmailVerification(auth.currentUser)   
+    if (!acceptTerms) {
+      setError('You must accept the terms and conditions');
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        sendEmailVerification(auth.currentUser)
           .then(() => {
-            setTimeActive(true)
-            navigate('/verify-email')
-          }).catch((err) => alert(err.message))
-        })
-        .catch(err => setError(err.message))
-    }
-    setEmail('')
-    setPassword('')
-    setConfirmPassword('')
-  }
+            navigate('/verify-email');
+          })
+          .catch(err => setError(err.message));
+      })
+      .catch(err => setError(err.message));
+  };
 
   return (
-    <div className='center'>
-      <div className='auth'>
-        <h1>Register</h1>
-        {error && <div className='auth__error'>{error}</div>}
-        <form onSubmit={register} name='registration_form'>
-          <input 
-            type='email' 
+    <div className='register-container'>
+      <div className='register-form'>
+        <h1>Sign Up</h1>
+        {error && <div className='register-error'>{error}</div>}
+        <form onSubmit={register}>
+          <input
+            type='email'
             value={email}
-            placeholder="Enter your email"
+            placeholder='Email'
             required
-            onChange={e => setEmail(e.target.value)}/>
-
-          <input 
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
             type='password'
-            value={password} 
+            value={password}
+            placeholder='Password'
             required
-            placeholder='Enter your password'
-            onChange={e => setPassword(e.target.value)}/>
-
-            <input 
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
             type='password'
-            value={confirmPassword} 
+            value={confirmPassword}
+            placeholder='Confirm Password'
             required
-            placeholder='Confirm password'
-            onChange={e => setConfirmPassword(e.target.value)}/>
-
-          <button type='submit'>Register</button>
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <div className='terms-container'>
+            <input
+              type='checkbox'
+              id='acceptTerms'
+              checked={acceptTerms}
+              onChange={(e) => setAcceptTerms(e.target.checked)}
+            />
+            <label htmlFor='acceptTerms'>
+              I agree to the <Link to='/terms'>Terms and Conditions</Link>
+            </label>
+          </div>
+          <button type='submit' disabled={!acceptTerms}>Register</button>
         </form>
-        <span>
-          Already have an account?  
-          <Link to='/login'>login</Link>
-        </span>
+        <p>
+          Already have an account? <Link to='/login'>Login</Link>
+        </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;

@@ -4,9 +4,10 @@ import Profile from './Profile';
 import Register from './Register';
 import VerifyEmail from './VerifyEmail';
 import Login from './Login';
-import Dashboard from './dashboard';  // Make sure this is correctly imported
-import Capsule from './capsule';  // Import Capsule component
-import CapsuleList from './capsule-list';  // Import CapsuleList component
+import Dashboard from './dashboard';
+import Capsule from './capsule';
+import CapsuleList from './capsule-list';
+import Terms from './terms'; // Import Terms component
 import { useState, useEffect } from 'react';
 import { AuthProvider } from './AuthContext';
 import { auth } from './firebase';
@@ -43,7 +44,7 @@ function App() {
             ? <Register/>
             : <Navigate to='/' replace/>
           } />
-          <Route path='/verify-email' element={<VerifyEmail/>} /> 
+          <Route path='/verify-email' element={<VerifyEmail/>} />
           <Route path="/profile" element={
             <PrivateRoute>
               <Profile />
@@ -51,14 +52,16 @@ function App() {
           } />
           <Route path="/capsule" element={
             <PrivateRoute>
-              <Capsule />  // Route for the Capsule component
+              <Capsule />
             </PrivateRoute>
           } />
           <Route path="/capsule-list" element={
             <PrivateRoute>
-              <CapsuleList />  // Route for the CapsuleList component
+              <CapsuleList />
             </PrivateRoute>
           } />
+          {/* New route for Terms component */}
+          <Route path="/terms" element={<Terms />} />
         </Routes>  
       </AuthProvider>
     </Router>
