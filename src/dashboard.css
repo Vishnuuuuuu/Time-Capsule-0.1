@@ -65,3 +65,17 @@
     opacity: 0;
   }
 }
+
+
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between; /* Spreads out children to start and end */
+  align-items: left;
+  padding: 10px;
+}
+
+.profile-icon {
+  cursor: pointer;
+  /* Additional styling for the icon */
+}
