@@ -25,13 +25,13 @@ function Dashboard() {
           <Card
             title="Create Capsule"
             description="Create a new time capsule to store your memories."
-            image="/public/Capsule.jpeg" // Replace with your image path
+            image="/Capsule.jpeg" // Replace with your image path
             onClick={() => navigate('/capsule')}
           />
           <Card
             title="Show Capsules"
             description="View your existing time capsules."
-            image="/path/to/your/show-capsules-image.jpg" // Replace with another image path
+            image="/Show capsule.png" // Replace with another image path
             onClick={() => navigate('/capsule-list')}
           />
         </div>
