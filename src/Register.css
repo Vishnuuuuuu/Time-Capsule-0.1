@@ -1,61 +1,70 @@
 .register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4; /* Adjust the background color as needed */
-  }
-  
-  .register-form {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px; /* Adjust width as needed */
-  }
-  
-  .register-form h1 {
-    margin-bottom: 20px;
-  }
-  
-  .register-form input[type='email'],
-  .register-form input[type='password'] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .register-form .terms-container {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-  
-  .register-form .terms-container label {
-    margin-left: 5px;
-    font-size: 14px;
-  }
-  
-  .register-form button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .register-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .register-error {
-    color: red;
-    margin-bottom: 15px;
-  }
-  
-  /* Add additional styles as needed */
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333; /* Dark background for contrast */
+}
+
+.register-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 350px; /* Slightly wider for a better layout */
+  text-align: center;
+  color: #333; /* Dark text for readability */
+}
+
+.register-form h1 {
+  margin-bottom: 20px;
+  color: #f9d342; /* Yellow color for the header */
+}
+
+.register-form input[type='email'],
+.register-form input[type='password'] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #f9d342; /* Yellow border */
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.register-form .terms-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.register-form .terms-container input[type='checkbox'] {
+  accent-color: #f9d342; /* Yellow accent for checkbox */
+}
+
+.register-form .terms-container label {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #333; /* Ensuring readability */
+}
+
+.register-form button {
+  background-color: #f9d342; /* Vibrant yellow button */
+  color: #333; /* Contrasting text color */
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.register-form button:hover {
+  background-color: #dbba34; /* Darker yellow on hover */
+}
+
+.register-error {
+  color: #ff6b6b; /* Red color for error messages */
+  margin-bottom: 1em;
+}
+
+/* Feel free to add more styles as needed */

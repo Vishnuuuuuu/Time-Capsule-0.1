@@ -1,27 +1,83 @@
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .capsule {
-    text-align: center;
-  }
-  
-  .capsule input[type="file"],
-  .capsule input[type="date"] {
-    margin-top: 10px;
-  }
-  
-  .capsule button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
-  
+/* Neumorphic Background with a dark twist */
+.capsule-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #333; /* Dark background */
+}
+
+/* Capsule Form Styling with Yellow Accents */
+.capsule {
+  background: #333;
+  border-radius: 20px;
+  box-shadow: -8px -8px 15px #444, 8px 8px 15px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect for Form */
+.capsule:hover {
+  box-shadow: -10px -10px 15px #555, 10px 10px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Stylish Header with Yellow Color */
+.capsule h1 {
+  color: #f9d342; /* Bright yellow color for header */
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Input and Button Styling */
+.capsule input,
+.capsule button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #333;
+  border: none;
+  border-radius: 15px;
+  color: #f9d342; /* Yellow text for better contrast */
+  box-shadow: inset 8px 8px 15px rgba(0, 0, 0, 0.3), inset -8px -8px 15px #444;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Focus Effect for Inputs */
+.capsule input:focus {
+  outline: none;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2), inset -1px -1px 2px #444;
+}
+
+/* Styling for File Input */
+.capsule input[type="file"] {
+  cursor: pointer;
+}
+
+/* Dynamic Button Design */
+.capsule button {
+  background-color: #f9d342; /* Vibrant yellow button */
+  color: #333; /* Dark text for contrast */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Interactive Hover Effect for Button */
+.capsule button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Error Message Styling */
+.error {
+  color: #ff6b81; /* Vivid color for error messages */
+  margin-bottom: 1em;
+  font-size: 1em;
+  font-weight: bold;
+}

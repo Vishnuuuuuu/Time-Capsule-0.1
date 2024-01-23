@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { storage, auth } from './firebase';
 import { ref, listAll, getMetadata } from 'firebase/storage'; // Import the necessary functions
 import { useNavigate } from 'react-router-dom';
+import './capsule-list.css'; // Import the CSS file
+// ... rest of your imports
 
 function CapsuleList() {
   const [capsules, setCapsules] = useState([]);
@@ -44,9 +46,9 @@ function CapsuleList() {
       <div className='capsule-list'>
         <h1>Your Capsules</h1>
         {capsules.map((capsule, index) => (
-          <div key={index}>
-            <p>Capsule Name: {capsule.name}</p>
-            <p>Maturity Date: {capsule.maturityDate}</p>
+          <div key={index} className='capsule-item'>
+            <h2>{capsule.name}</h2>
+            <p>Unlocking Date: {capsule.maturityDate}</p>
           </div>
         ))}
       </div>

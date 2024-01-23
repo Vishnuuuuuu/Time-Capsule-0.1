@@ -1,9 +1,37 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react'; // Import useState and useEffect
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css'; // Ensure this file contains the necessary CSS
 
 function Dashboard() {
   const navigate = useNavigate();
+  const [dynamicText, setDynamicText] = useState('');
+  const sentences = ['Hi, how are you doing?', 'Hope you are enjoying our service!'];
+
+  useEffect(() => {
+    let currentSentence = 0;
+    let currentChar = 0;
+    let timer;
+
+    const typeWriter = () => {
+      if (currentChar < sentences[currentSentence].length) {
+        setDynamicText((prev) => prev + sentences[currentSentence][currentChar]);
+        currentChar++;
+        timer = setTimeout(typeWriter, 100); // Speed of typing
+      } else {
+        setTimeout(() => {
+          setDynamicText('');
+          currentChar = 0;
+          currentSentence = (currentSentence + 1) % sentences.length;
+          typeWriter();
+        }, 1000); // Wait a second after a sentence is completed
+      }
+    };
+
+    typeWriter();
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const Card = ({ title, description, image, onClick }) => {
     return (
@@ -34,6 +62,10 @@ function Dashboard() {
             image="/Abc.png" // Replace with another image path
             onClick={() => navigate('/capsule-list')}
           />
+        </div>
+        <div className='dynamic-text-container'>
+          <span className='dynamic-text'>{dynamicText}</span>
+          <span className='cursor' />
         </div>
       </div>
     </div>

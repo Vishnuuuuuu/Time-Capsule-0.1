@@ -37,3 +37,31 @@
   color: #666;
   padding: 0 10px;
 }
+
+/* ... other styles ... */
+
+.dynamic-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dynamic-text {
+  
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.cursor {
+  width: 2px;
+  height: 1em; /* Adjust height to match your text size */
+  background-color: black;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
