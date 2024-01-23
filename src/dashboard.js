@@ -17,7 +17,7 @@ function Dashboard() {
         </div>
         <div className='dashboard-cards'>
           <div className='card' onClick={() => navigate('/capsule')}>
-            Create Capsule
+            Create Capsule Here
           </div>
           <div className='card' onClick={() => navigate('/capsule-list')}>
             Show Capsules
