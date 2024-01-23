@@ -55,6 +55,11 @@ function App() {
               <Capsule />
             </PrivateRoute>
           } />
+          <Route path="/dashboard" element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          } />
           <Route path="/capsule-list" element={
             <PrivateRoute>
               <CapsuleList />
