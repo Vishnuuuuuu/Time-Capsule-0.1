@@ -31,7 +31,7 @@ function Dashboard() {
           <Card
             title="Show Capsules"
             description="View your existing time capsules."
-            image="/Show capsule.png" // Replace with another image path
+            image="/Abc.png" // Replace with another image path
             onClick={() => navigate('/capsule-list')}
           />
         </div>
