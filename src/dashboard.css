@@ -1,8 +1,10 @@
 .center {
+  position: relative; /* This makes child absolute positioning relative to this container */
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ensure it covers at least the whole viewport height */
+  min-height: 100vh;
+  /* ... other styles ... */
 }
 
 .dashboard {
@@ -20,9 +22,22 @@
 }
 
 .profile-icon {
+  position: absolute; /* Position the icon absolutely */
+  top: 10px; /* Adjust distance from the top */
+  right: 10px; /* Adjust distance from the right */
   cursor: pointer;
-  /* Add more styling as needed */
+  /* Style as desired (size, background, etc.) */
+  /* Example: */
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  border-radius: 50%; /* Circular shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff; /* Example background color */
+  color: white; /* Example icon color */
 }
+
 
 .dashboard-cards {
   display: flex;

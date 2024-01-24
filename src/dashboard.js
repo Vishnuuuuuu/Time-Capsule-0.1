@@ -48,12 +48,13 @@ function Dashboard() {
   return (
     <div className='center'>
       <div className='dashboard'>
-        <h1>Dashboard</h1>
+        
         {/* Profile Icon */}
         <div className="profile-icon" onClick={() => navigate('/profile')}>
             {/* Replace "👤" with an actual icon if you have one */}
             <span role="img" aria-label="Profile">👤</span>
           </div>
+        <h1>Dashboard</h1>
         
         <div className='dashboard-cards'>
           <Card
