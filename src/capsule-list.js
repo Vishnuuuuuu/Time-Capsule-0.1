@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { storage, auth } from './firebase';
-import { ref, listAll, getMetadata } from 'firebase/storage'; // Import the necessary functions
+import { ref, listAll, getMetadata } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
-import './capsule-list.css'; // Import the CSS file
-// ... rest of your imports
+import './capsule-list.css';
 
 function CapsuleList() {
   const [capsules, setCapsules] = useState([]);
@@ -20,15 +19,20 @@ function CapsuleList() {
         const capsulesRef = ref(storage, `capsules/${auth.currentUser.uid}/`);
         const capsuleFolders = await listAll(capsulesRef);
 
+        const today = new Date();
         const capsulesData = [];
         for (const folder of capsuleFolders.prefixes) {
           const files = await listAll(folder);
           for (const fileRef of files.items) {
             const metadata = await getMetadata(fileRef);
-            capsulesData.push({
-              name: folder.name, // Assuming folder name is the capsule name
-              maturityDate: metadata.customMetadata?.maturityDate
-            });
+            const maturityDate = new Date(metadata.customMetadata?.maturityDate);
+
+            if (maturityDate >= today) {
+              capsulesData.push({
+                name: folder.name,
+                maturityDate: metadata.customMetadata?.maturityDate
+              });
+            }
           }
         }
 
@@ -45,12 +49,16 @@ function CapsuleList() {
     <div className='center'>
       <div className='capsule-list'>
         <h1>Your Capsules</h1>
-        {capsules.map((capsule, index) => (
-          <div key={index} className='capsule-item'>
-            <h2>{capsule.name}</h2>
-            <p>Unlocking Date: {capsule.maturityDate}</p>
-          </div>
-        ))}
+        {capsules.length > 0 ? (
+          capsules.map((capsule, index) => (
+            <div key={index} className='capsule-item'>
+              <h2>{capsule.name}</h2>
+              <p>Unlocking Date: {capsule.maturityDate}</p>
+            </div>
+          ))
+        ) : (
+          <p>No upcoming capsules to display.</p>
+        )}
       </div>
     </div>
   );

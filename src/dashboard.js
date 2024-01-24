@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'; // Import useState and useEffect
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css'; // Ensure this file contains the necessary CSS
+import { CgProfile } from "react-icons/cg";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ function Dashboard() {
         {/* Profile Icon */}
         <div className="profile-icon" onClick={() => navigate('/profile')}>
             {/* Replace "👤" with an actual icon if you have one */}
-            <span role="img" aria-label="Profile">👤</span>
+            <span role="img" aria-label="Profile"><CgProfile /></span>
           </div>
         <h1>Dashboard</h1>
         
@@ -60,19 +61,19 @@ function Dashboard() {
           <Card
             title="Create Capsule"
             description="Create a new time capsule to store your memories."
-            image="/Capsule.jpeg" // Replace with your image path
+            image="/image/Capsule.jpeg" // Replace with your image path
             onClick={() => navigate('/capsule')}
           />
           <Card
             title="Show Capsules"
             description="View your existing time capsules."
-            image="/Abc.png" // Replace with another image path
+            image="/image/Abc.png" // Replace with another image path
             onClick={() => navigate('/capsule-list')}
           />
         </div>
         <div className='dynamic-text-container'>
-          <span className='dynamic-text'>{dynamicText}</span>
-          <span className='cursor' />
+          <h2 className='dynamic-text'>{dynamicText}</h2>
+          <h2 className='cursor' />
         </div>
       </div>
     </div>
