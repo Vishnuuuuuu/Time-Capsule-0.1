@@ -2,25 +2,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Ensure it covers at least the whole viewport height */
 }
 
 .dashboard {
   text-align: center;
+  max-width: 90%; /* Limit the width for larger screens */
+  margin: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between; /* Spreads out children to start and end */
+  align-items: center; /* Changed from 'left' to 'center' */
+  padding: 10px;
+  width: 100%;
+}
+
+.profile-icon {
+  cursor: pointer;
+  /* Add more styling as needed */
 }
 
 .dashboard-cards {
   display: flex;
+  flex-wrap: wrap; /* Wrap cards on smaller screens */
   justify-content: center;
-  gap: 20px; /* Adjust the gap between cards */
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .card {
-  width: 400px; /* Adjust card width */
+  width: 100%; /* Full width on smaller screens */
+  max-width: 300px; /* Fixed max width for larger screens */
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+  transform: scale(1); /* Slight scale effect on hover */
 }
 
 .card-image {
@@ -31,6 +54,7 @@
 
 .card-content h2 {
   margin: 10px 0;
+  color: #333; /* Darker color for better visibility */
 }
 
 .card-content p {
@@ -38,24 +62,21 @@
   padding: 0 10px;
 }
 
-/* ... other styles ... */
-
 .dynamic-text-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .dynamic-text {
-  
   font-size: 20px;
   margin-right: 5px;
 }
 
 .cursor {
   width: 2px;
-  height: 1em; /* Adjust height to match your text size */
+  height: 1em;
   background-color: black;
   animation: blink 1s steps(1) infinite;
 }
@@ -66,16 +87,9 @@
   }
 }
 
-
-
-.dashboard-header {
-  display: flex;
-  justify-content: space-between; /* Spreads out children to start and end */
-  align-items: left;
-  padding: 10px;
-}
-
-.profile-icon {
-  cursor: pointer;
-  /* Additional styling for the icon */
+/* Responsive Design for smaller screens */
+@media (max-width: 600px) {
+  .card {
+    width: 90%; /* Slightly smaller width on small screens */
+  }
 }
