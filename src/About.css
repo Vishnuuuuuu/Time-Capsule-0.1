@@ -1,0 +1,52 @@
+/* Full-Page Layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  section {
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  .section-overview {
+    background-color: #333;
+  }
+  
+  .section-idea-generation {
+    background-color: #444;
+  }
+  
+  .section-problem-solving {
+    background-color: #555;
+  }
+  
+  .section-project-details {
+    background-color: #666;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    max-width: 800px;
+    margin: auto;
+    text-align: justify;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    section {
+      padding: 20px 10px;
+    }
+  
+    p {
+      max-width: 100%;
+    }
+  }
+  

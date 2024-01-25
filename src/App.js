@@ -4,6 +4,7 @@ import Profile from './Profile';
 import Register from './Register';
 import VerifyEmail from './VerifyEmail';
 import Login from './Login';
+import About from './about'; // Import the About component
 import Dashboard from './dashboard';
 import Capsule from './capsule';
 import CapsuleList from './capsule-list';
@@ -13,6 +14,7 @@ import { AuthProvider } from './AuthContext';
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import PrivateRoute from './PrivateRoute';
+
 import { Navigate } from 'react-router-dom';
 
 function App() {
@@ -53,6 +55,11 @@ function App() {
           <Route path="/capsule" element={
             <PrivateRoute>
               <Capsule />
+            </PrivateRoute>
+          } />
+          <Route path="/About" element={
+            <PrivateRoute>
+              <About />
             </PrivateRoute>
           } />
           <Route path="/dashboard" element={
