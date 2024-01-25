@@ -54,14 +54,15 @@ function Dashboard() {
         <div className="profile-icon" onClick={() => navigate('/profile')}>
             {/* Replace "👤" with an actual icon if you have one */}
             <span role="img" aria-label="Profile"><CgProfile /></span>
-          </div>
+            <span className="profile-text">Profile</span> {/* Add this line */}
+        </div>
         <h1>Dashboard</h1>
         
         <div className='dashboard-cards'>
           <Card
             title="Create Capsule"
             description="Create a new time capsule to store your memories."
-            image="/image/Capsule.jpeg" // Replace with your image path
+            image="/image/CF.png" // Replace with your image path
             onClick={() => navigate('/capsule')}
           />
           <Card

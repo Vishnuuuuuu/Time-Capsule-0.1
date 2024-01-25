@@ -1,94 +1,93 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
 .center {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('/public/image/dashbg2.jpg'); /* Add your background image */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-color: aqua; /* Fallback color if the image is not available */
-  /* ... other styles ... */
+  background-image: url('/public/image/dashbg2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: aqua;
+  overflow: hidden; /* Prevents overflow of background image or content */
 }
 
-
-
-
 .dashboard {
-
   text-align: center;
-  max-width: 90%; /* Limit the width for larger screens */
+  max-width: 90%;
   margin: auto;
-  
 }
 
 .dashboard-header {
   display: flex;
-  justify-content: space-between; /* Spreads out children to start and end */
-  align-items: center; /* Changed from 'left' to 'center' */
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   width: 100%;
+}
 
-
-  }
-  .dashboard h1 {
-    color: white /* Replace #YourColorCode with your desired color */
-  }
+.dashboard h1 {
+  color: white;
+}
 
 .profile-icon {
-  position: absolute; /* Position the icon absolutely */
-  top: 40px; /* Adjust distance from the top */
-  right: 40px; /* Adjust distance from the right */
+  position: absolute;
+  top: 40px;
+  right: 40px;
   cursor: pointer;
-
-  /* Style as desired */
-  width: 50px; /* Icon width */
-  height: 50px; /* Icon height */
-  border-radius: 50%; /* Circular shape for a rounded icon */
-
-  /* Flexbox settings to center content */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
-  justify-content: center; /* Horizontally center content */
-  align-items: center; /* Vertically center content */
-
-  /* Additional styling */
-  
-  font-size: 50px; /* Adjust icon size */
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  font-size: 50px;
+  flex-direction: column;
 }
 
-/* Responsive adjustments for smaller screens */
+.profile-icon .profile-text {
+  color: aliceblue;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 @media (max-width: 600px) {
-  .profile-icon {
-    width: 60px;  /* Smaller size on small screens */
-    height: 60px; /* Smaller size on small screens */
-    top: 20px;    /* Adjusted position */
-    right: 5px;   /* Adjusted position */
+  .profile-icon,
+  .profile-text {
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 5px;
+    font-size: 10px;
   }
 }
-
-
 
 .dashboard-cards {
   display: flex;
-  flex-wrap: wrap; /* Wrap cards on smaller screens */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   margin-top: 10px;
 }
 
 .card {
-  width: 100%; /* Full width on smaller screens */
-  max-width: 300px; /* Fixed max width for larger screens */
+  width: 100%;
+  max-width: 300px;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s; /* Smooth transition for hover effect */
-}
+  transition: transform 0.3s ease; /* Smooth transition effect */}
 
 .card:hover {
-  transform: scale(1.0); /* Slight scale effect on hover */
+  transform:  scale(1);
 }
 
 .card-image {
@@ -99,7 +98,7 @@
 
 .card-content h2 {
   margin: 5px 0;
-  color: #333; /* Darker color for better visibility */
+  color: #333;
 }
 
 .card-content p {
@@ -112,6 +111,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+  white-space: nowrap;
 }
 
 .dynamic-text {
@@ -122,21 +122,25 @@
 }
 
 .cursor {
-  width: 2px;
-  height: 1em;
-  background-color: black;
-  animation: blink 1s steps(1) infinite;
+  width: 10px;
+  height: 1.5em;
+  background-color: white;
+  animation: blink 1s steps(5, start) infinite;
+  
 }
 
 @keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
   50% {
     opacity: 0;
   }
 }
 
-/* Responsive Design for smaller screens */
+
 @media (max-width: 600px) {
   .card {
-    width: 90%; /* Slightly smaller width on small screens */
+    width: 90%;
   }
 }

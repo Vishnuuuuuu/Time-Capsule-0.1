@@ -1,25 +1,32 @@
 .register-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #333; /* Dark background for contrast */
+  min-height: 100vh;
+  background-image: url('/public/image/dashbg2.jpg'); /* Add your background image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-color: aqua; /* Fallback color if the image is not available */
+  /* ... other styles ... */
 }
 
 .register-form {
-  background: white;
+  background: black;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 350px; /* Slightly wider for a better layout */
   text-align: center;
-  color: #333; /* Dark text for readability */
+  color: white; /* Dark text for readability */
 }
 
 .register-form h1 {
   margin-bottom: 20px;
-  color: #f9d342; /* Yellow color for the header */
+  color:  white; /* Yellow color for the header */
+  font-weight: bold;
 }
 
 .register-form input[type='email'],
@@ -44,7 +51,7 @@
 .register-form .terms-container label {
   margin-left: 5px;
   font-size: 14px;
-  color: #333; /* Ensuring readability */
+  color: white; /* Ensuring readability */
 }
 
 .register-form button {
