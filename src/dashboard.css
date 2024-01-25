@@ -10,7 +10,7 @@ html, body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('/public/image/dash23.png');
+  background-image: url('/public/image/cl1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -47,13 +47,13 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: aliceblue;
+  color: black;
   font-size: 50px;
   flex-direction: column;
 }
 
 .profile-icon .profile-text {
-  color: aliceblue;
+  color: black;
   font-size: 20px;
   margin-top: 5px;
 }
@@ -125,12 +125,17 @@ html, body {
   margin-right: 5px;
   font-weight: bold;
   color: white;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Black border effect */
 }
 
 .cursor {
   width: 7px;
   height: 1em;
-  background-color: white;
+  background-color: black;
   animation: blink 1s steps(5, start) infinite;
 }
 

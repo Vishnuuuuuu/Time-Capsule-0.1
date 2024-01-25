@@ -1,17 +1,28 @@
-.profile{
+.profile {
   width: 90%;
   max-width: 400px;
-  border: 1px solid #dcdcdc;
+  border: 1px solid #f9d342; /* Yellow border to match the theme */
   padding: 20px;
   text-align: center;
+  background-color: #333; /* Dark background */
+  color: #f9d342; /* Yellow text color */
+  border-radius: 10px; /* Rounded corners for the profile box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .profile p {
   text-align: left;
+  color: white; /* White color for better readability against dark background */
 }
 
-.profile > span{
-  color: blue;
+.profile > span {
+  color: #f9d342; /* Yellow color for clickable elements */
   margin-top: 30px;
   cursor: pointer;
+  text-decoration: underline; /* Underline to indicate it's clickable */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.profile > span:hover {
+  color: #dbba34; /* Slightly darker yellow on hover */
 }
