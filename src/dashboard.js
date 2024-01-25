@@ -7,7 +7,15 @@ import { CgProfile } from "react-icons/cg";
 function Dashboard() {
   const navigate = useNavigate();
   const [dynamicText, setDynamicText] = useState('');
-  const sentences = ['Hi, how are you doing?', 'Hope you are enjoying our service!'];
+  const sentences = [
+      "We store memories, not just images/videos...",
+      "We believe in quality over quantity(Max:3 capsules)...",
+     "Unlock the past, relive the moment...",
+      "Your future self will thank you...",
+     "Time capsules: A journey to yesterday...",
+      "Preserve today, cherish tomorrow...",
+      "Where memories wait for you..."
+  ];
 
   useEffect(() => {
     let currentSentence = 0;

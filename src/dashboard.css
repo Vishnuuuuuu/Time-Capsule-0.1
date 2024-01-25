@@ -10,7 +10,7 @@ html, body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('/public/image/dashbg2.jpg');
+  background-image: url('/public/image/dash23.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,20 +54,26 @@ html, body {
 
 .profile-icon .profile-text {
   color: aliceblue;
-  font-size: 12px;
+  font-size: 20px;
   margin-top: 5px;
 }
 
 @media (max-width: 600px) {
-  .profile-icon,
-  .profile-text {
-    width: 60px;
-    height: 60px;
+  .profile-icon {
+    width: 80px; /* Larger size for the icon */
+    height: 80px; /* Larger size for the icon */
     top: 20px;
-    right: 5px;
-    font-size: 10px;
+    right: 5px; /* Adjusted for better positioning */
+    font-size: 30px; /* Larger font size for the icon */
+  }
+
+  .profile-text {
+    margin-top: 5px;
+    font-size: 14px; /* Increased font size for visibility */
+    /* Adjust other styles as needed for text positioning */
   }
 }
+
 
 .dashboard-cards {
   display: flex;
@@ -98,11 +104,11 @@ html, body {
 
 .card-content h2 {
   margin: 5px 0;
-  color: #333;
+  color:black;
 }
 
 .card-content p {
-  color: #666;
+  color: rgba(20, 19, 19, 0.897);
   padding: 0 10px;
 }
 
@@ -111,7 +117,7 @@ html, body {
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .dynamic-text {
@@ -122,11 +128,10 @@ html, body {
 }
 
 .cursor {
-  width: 10px;
-  height: 1.5em;
+  width: 7px;
+  height: 1em;
   background-color: white;
   animation: blink 1s steps(5, start) infinite;
-  
 }
 
 @keyframes blink {
@@ -138,9 +143,8 @@ html, body {
   }
 }
 
-
 @media (max-width: 600px) {
-  .card {
-    width: 90%;
+  .dynamic-text {
+    font-size: 20px; /* Smaller font size for small screens */
   }
 }

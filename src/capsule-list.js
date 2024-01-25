@@ -48,16 +48,16 @@ function CapsuleList() {
   return (
     <div className='center'>
       <div className='capsule-list'>
-        <h1>Your Capsules</h1>
+        <h1 style={{ color: "black" }}>Your Capsules</h1> {/* Changed color */}
         {capsules.length > 0 ? (
           capsules.map((capsule, index) => (
             <div key={index} className='capsule-item'>
               <h2>{capsule.name}</h2>
-              <p>Unlocking Date: {capsule.maturityDate}</p>
+              <p ><h4>Your capsule is unlocking soon! Watch your email for the magic moment on {capsule.maturityDate}</h4></p>
             </div>
           ))
         ) : (
-          <p>No upcoming capsules to display.</p>
+          <p style={{ color: "white" }}>No upcoming capsules to display.</p>
         )}
       </div>
     </div>

@@ -81,3 +81,48 @@
   font-size: 1em;
   font-weight: bold;
 }
+/* ... existing styles ... */
+
+/* Custom Styling for File Input and Date Picker */
+.capsule input[type="file"],
+.capsule input[type="date"] {
+  background: #444; /* Darker background */
+  color: #f9d342; /* Yellow text */
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #f9d342; /* Yellow border */
+  font-size: 1em;
+  cursor: pointer;
+  text-align: left; /* Align text to the left */
+}
+
+/* Custom arrow for the date input */
+.capsule input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #f9d342; /* Yellow arrow color */
+  opacity: 1; /* Make the arrow fully visible */
+}
+
+/* Custom styling for file input to mimic a button */
+.capsule input[type="file"] {
+  -webkit-appearance: button; /* Style it like a button */
+  text-align: center; /* Center the text */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
+}
+
+/* Hover Effects for File Input and Date Picker */
+.capsule input[type="file"]:hover,
+.capsule input[type="date"]:hover {
+  background-color: #3b3b3b; /* Slightly lighter on hover */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4); /* Enhanced inner shadow */
+}
+
+/* ... rest of your styles ... */
+
+/* Error Message Styling */
+.error {
+  color: #ff6b81; /* Vivid color for error messages */
+  margin-bottom: 1em;
+  font-size: 1em;
+  font-weight: bold;
+}

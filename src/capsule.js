@@ -36,6 +36,15 @@ function Capsule() {
   };
 
   const createCapsule = async () => {
+    const currentDate = new Date();
+    const selectedDate = new Date(date);
+
+    // Check if the selected date is in the past
+    if (selectedDate < currentDate) {
+      setError("You can't travel back in time. Please select a future date.");
+      return;
+    }
+
     if (!file || !date || !capsuleName) {
       setError('Please select a file, a date, and enter a capsule name');
       return;
@@ -45,16 +54,14 @@ function Capsule() {
     const metadata = {
       customMetadata: {
         'maturityDate': date,
-        'userEmail': auth.currentUser.email, // Storing the user's email in the metadata
-        'capsuleName': capsuleName // Storing the user-defined capsule name in the metadata
+        'userEmail': auth.currentUser.email,
+        'capsuleName': capsuleName
       }
     };
 
     try {
       await uploadBytes(fileRef, file, metadata);
-      // Removed getDownloadURL as it's not used in this context
-
-      alert('Capsule created successfully');
+      alert('Capsule created successfully ');
       navigate('/'); // Redirect to dashboard or capsule list
     } catch (error) {
       console.error('Error creating capsule:', error);
