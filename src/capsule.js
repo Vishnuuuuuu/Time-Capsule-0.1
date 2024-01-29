@@ -97,10 +97,17 @@ function Capsule() {
       <div className='capsule-form'>
         <h1>Create Capsule</h1>
         <input type="text" onChange={onCapsuleNameChange} placeholder="Enter Capsule Name" />
+        <span>Choose a Memory</span>
         <input type="file" onChange={onFileChange} />
+        <span>Select Unlock date</span>
         <input type="date" onChange={onDateChange} />
+  
+        {/* Label for the theme selection */}
+        <span className="theme-label">Hot themes</span>
+  
+        {/* Container for theme options */}
         <div className="theme-selection">
-          {['Bday', 'First', 'Grad', 'Travel', 'Learn', 'Other'].map((theme) => (
+          {[' Celebration', 'Milestones', 'Reflection', 'Tribute', 'Union','Wanderlust', 'Other'].map((theme) => (
             <div
               key={theme}
               className={`theme-option ${selectedTheme === theme ? 'selected' : ''}`}
@@ -115,6 +122,7 @@ function Capsule() {
       </div>
     </div>
   );
+  
 }
 
 export default Capsule;

@@ -57,8 +57,11 @@
 /* Theme options styling */
 .theme-selection {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap; /* Allows theme options to wrap */
+  justify-content: center; /* Centers options */
+  gap: 10px; /* Adds space between options */
   margin: 15px 0;
+  padding: 0 10px; /* Adds padding to prevent content from touching the edges */
 }
 
 .theme-option {
@@ -66,8 +69,7 @@
   align-items: center;
   justify-content: center;
   padding: 5px 15px;
-  margin: 0 5px;
-  border: none;
+  margin: 5px; /* Adjusts spacing around each option */  border: none;
   border-radius: 20px;
   background: #6a11cb;
   color: #fff;
@@ -87,8 +89,8 @@
   padding: 15px 30px;
   border: none;
   border-radius: 30px;
-  background: #2575fc;
-  color: #fff;
+  background: #faea05f8;
+  color: black;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-top: 20px;
@@ -99,6 +101,15 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
 }
+.theme-label {
+  display: block; /* Ensures the label is on a new line */
+  margin-top: 1rem; /* Adds some space above the label */
+  margin-bottom: 0.5rem; /* Adds some space below the label */
+  font-weight: bold; /* Makes the label text bold */
+  text-align: center; /* Centers the label text */
+  color: #f9d342; /* Styles the label text with the theme color */
+}
+
 
 /* Error message styling */
 .error-message {
