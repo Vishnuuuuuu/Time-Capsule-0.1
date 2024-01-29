@@ -1,70 +1,94 @@
+/* Main container for the capsule creation */
 .capsule-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4; /* Adjust the background color as needed */
-}
-
-.capsule-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px; /* Adjust the max-width as needed */
-}
-
-.capsule-form h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.capsule-form input,
-.capsule-form button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.theme-selection {
-  display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Allows themes to wrap to next line on small screens */
+  height: 100vh;
+  background: #333; /* Dark background for contrast */
+  color: #f9d342; /* Yellow color for text */
 }
 
+/* The form container */
+.capsule-form {
+  background: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px; /* Max width to keep the form contained */
+}
+
+/* Styling the header */
+.capsule-form-header {
+  font-size: 2.5rem; /* Large font size for the header */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Styling for input fields */
+.capsule-form input[type="text"],
+.capsule-form input[type="file"],
+.capsule-form input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  border: 1px solid #f9d342; /* Yellow border */
+  background: #222; /* Darker background for inputs */
+  color: #f9d342; /* Yellow text color for contrast */
+}
+
+/* Override styles for the file input to make it more attractive */
+.capsule-form input[type="file"] {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* Making the date picker more user-friendly */
+.capsule-form input[type="date"] {
+  cursor: pointer;
+}
+
+/* Styling for the theme options */
 .theme-option {
-  padding: 10px;
-  margin: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem; /* Spacing between options */
+  border: 1px solid #f9d342; /* Yellow border */
+  border-radius: 20px; /* Rounded edges for the options */
+  background: none; /* Transparent background */
+  color: #f9d342; /* Yellow text */
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s, color 0.3s; /* Smooth transition for hover effect */
 }
 
-.theme-option:hover {
-  background-color: #eaeaea;
+/* Highlight the selected theme option */
+.theme-option.selected {
+  background: #f9d342; /* Yellow background for selected option */
+  color: #333; /* Dark text for selected option */
 }
 
-.selected {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
+/* The submit button for the form */
 .capsule-form button {
-  background-color: #007bff;
-  color: white;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 5px;
+  background: #f9d342; /* Yellow background */
+  color: #333; /* Dark text */
   cursor: pointer;
+  transition: opacity 0.3s; /* Smooth transition for hover effect */
 }
 
+/* Hover effect for the submit button */
 .capsule-form button:hover {
-  background-color: #0056b3;
+  opacity: 0.9; /* Slight transparency on hover */
 }
 
-.error {
-  color: red;
-  margin-bottom: 20px;
+/* Error message styling */
+.error-message {
+  color: #ff6b6b; /* Red color for error messages */
+  margin-top: 0.5rem; /* Spacing above the error message */
+  text-align: center;
 }
