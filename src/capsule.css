@@ -5,31 +5,28 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #6a11cb;  /* Trendy gradient background */
-  background: linear-gradient(160deg, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(to right, #8e9eab, #eef2f3); /* Subtle gradient background */
   padding: 20px;
 }
 
 /* The form container */
 .capsule-form {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   padding: 30px;
   border-radius: 20px;
   width: 100%;
   max-width: 600px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling the header with animation */
+/* Styling the header */
 .capsule-form-header {
   font-size: 2rem;
-  color: #fff;
-  position: relative;
+  color: #333;
   margin-bottom: 2rem;
   text-align: center;
-  animation: none; /* Remove color shift for a cleaner look */
 }
 
 /* Input fields styling */
@@ -40,76 +37,53 @@
   padding: 10px;
   margin: 10px auto;
   border-radius: 5px;
-  border: none;
-  background: rgba(255, 255, 255, 0.8);
-  color: #6a11cb;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
   font-size: 1rem;
-}
-
-.capsule-form input[type="file"]::file-selector-button,
-.capsule-form input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: none;
-  background-color: #6a11cb;
-  color: #fff;
-  border-radius: 3px;
 }
 
 /* Theme options styling */
 .theme-selection {
   display: flex;
-  flex-wrap: wrap; /* Allows theme options to wrap */
-  justify-content: center; /* Centers options */
-  gap: 10px; /* Adds space between options */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   margin: 15px 0;
-  padding: 0 10px; /* Adds padding to prevent content from touching the edges */
 }
 
 .theme-option {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 5px 15px;
-  margin: 5px; /* Adjusts spacing around each option */  border: none;
   border-radius: 20px;
-  background: #6a11cb;
+  background: #131414; /* Matching the gradient theme */
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .theme-option.selected {
-  background: #10316b;
+  background: #555; /* Darker shade for selected option */
   color: #fff;
-  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.966);
 }
 
 /* Button styling */
 .capsule-form button {
   width: auto;
   padding: 15px 30px;
-  border: none;
   border-radius: 30px;
-  background: #faea05f8;
-  color: black;
+  background: #333;
+  color: #fff;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-top: 20px;
-  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .capsule-form button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
-.theme-label {
-  display: block; /* Ensures the label is on a new line */
-  margin-top: 1rem; /* Adds some space above the label */
-  margin-bottom: 0.5rem; /* Adds some space below the label */
-  font-weight: bold; /* Makes the label text bold */
-  text-align: center; /* Centers the label text */
-  color: #f9d342; /* Styles the label text with the theme color */
-}
-
 
 /* Error message styling */
 .error-message {
@@ -117,11 +91,12 @@
   margin-top: 1rem;
   text-align: center;
 }
+
 /* Responsive Design for small devices like mobile phones */
 @media (max-width: 480px) {
   .capsule-container {
     height: auto;
-    min-height: 100vh; /* Make sure it takes at least the viewport height */
+    min-height: 100vh;
   }
 
   .capsule-form {
@@ -130,20 +105,20 @@
   }
 
   .capsule-form-header {
-    font-size: 1.5rem; /* Smaller text for smaller screens */
+    font-size: 1.5rem;
   }
 
   .theme-selection {
-    flex-direction: row; /* Options next to each other */
-    flex-wrap: wrap; /* Allow wrapping if space runs out */
-    justify-content: center; /* Center options horizontally */
-    align-items: center; /* Align options vertically */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .theme-option {
-    width: auto; /* Auto width for flexibility */
-    margin: 5px; /* Add space around options */
-    padding: 5px 10px; /* Padding inside each option */
+    width: auto;
+    margin: 5px;
+    padding: 5px 10px;
   }
 
   .capsule-form button {
@@ -151,8 +126,6 @@
   }
 
   .error-message {
-    font-size: 0.9rem; /* Smaller font size for error messages */
+    font-size: 0.9rem;
   }
 }
-
-/* ... other media queries ... */

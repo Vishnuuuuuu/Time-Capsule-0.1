@@ -13,7 +13,7 @@ function Capsule() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const themePlaceholders = {
+  const themeDescriptions = {
     'Celebration': "Store the memories of celebrations, e.g., B'day, party etc.",
     'Milestones': "Record key milestones, e.g., graduations, achievements, etc.",
     'Reflection': "Capture reflective moments, e.g., personal growth, life lessons, etc.",
@@ -23,9 +23,11 @@ function Capsule() {
     'Other': "Enter a custom description for your capsule."
   };
 
-  const handleThemeSelect = (theme) => {
+ const handleThemeSelect = (theme) => {
     setSelectedTheme(theme);
-    setCustomDescription(themePlaceholders[theme]);
+    if (theme !== 'Other') {
+      setCustomDescription('');
+    }
   };
   const onFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -43,6 +45,10 @@ function Capsule() {
 
   const onCapsuleNameChange = (e) => {
     setCapsuleName(e.target.value);
+  };
+
+  const onCustomDescriptionChange = (e) => {
+    setCustomDescription(e.target.value);
   };
 
   const createCapsule = async () => {
@@ -88,8 +94,9 @@ function Capsule() {
         <input type="text" onChange={onCapsuleNameChange} placeholder="Enter Capsule Name" />
         <input type="file" onChange={onFileChange} />
         <input type="date" onChange={onDateChange} />
-        <div className="theme-selection">
-          {Object.keys(themePlaceholders).map((theme) => (
+        
+       <div className="theme-selection">
+          {Object.keys(themeDescriptions).map((theme) => (
             <div
               key={theme}
               className={`theme-option ${selectedTheme === theme ? 'selected' : ''}`}
@@ -99,23 +106,16 @@ function Capsule() {
             </div>
           ))}
         </div>
-        {(selectedTheme && selectedTheme !== 'Other') && (
+        
+        {selectedTheme && (
           <input
             type="text"
             value={customDescription}
-            onChange={(e) => setCustomDescription(e.target.value)}
-            placeholder={themePlaceholders[selectedTheme]}
-            disabled
+            onChange={onCustomDescriptionChange}
+            placeholder={themeDescriptions[selectedTheme]}
           />
         )}
-        {selectedTheme === 'Other' && (
-          <input
-            type="text"
-            value={customDescription}
-            onChange={(e) => setCustomDescription(e.target.value)}
-            placeholder={themePlaceholders[selectedTheme]}
-          />
-        )}
+
         <button onClick={createCapsule}>Create Capsule</button>
         {error && <div className='error'>{error}</div>}
       </div>
