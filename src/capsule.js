@@ -14,14 +14,15 @@ function Capsule() {
   const navigate = useNavigate();
 
   const themeDescriptions = {
-    'Celebration': "Store the memories of celebrations, e.g., B'day, party etc.",
-    'Milestones': "Record key milestones, e.g., graduations, achievements, etc.",
-    'Reflection': "Capture reflective moments, e.g., personal growth, life lessons, etc.",
-    'Tribute': "Pay tribute, e.g., to loved ones, memorable events, etc.",
-    'Union': "Cherish moments of union, e.g., weddings, reunions, etc.",
-    'Wanderlust': "Document your travel adventures and explorations.",
-    'Other': "Enter a custom description for your capsule."
+    'Celebration': "E.g., Birthdays, Parties.",
+    'Milestones': "E.g., Graduations, Achievements.",
+    'Reflection': "E.g., Growth, life lessons.",
+    'Tribute': "E.g., to loved ones, Events.",
+    'Union': "E.g., Weddings, Reunions.",
+    'Tour': "E.g., Travel, adventures.",
+    'Other': "Your custom capsule description."
   };
+  
 
  const handleThemeSelect = (theme) => {
     setSelectedTheme(theme);
