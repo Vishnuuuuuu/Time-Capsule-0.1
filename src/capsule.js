@@ -8,20 +8,25 @@ function Capsule() {
   const [file, setFile] = useState(null);
   const [date, setDate] = useState('');
   const [capsuleName, setCapsuleName] = useState('');
-  const [theme, setTheme] = useState('');
+  const [selectedTheme, setSelectedTheme] = useState('');
   const [customDescription, setCustomDescription] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  // New useState hook for the selected theme
-  const [selectedTheme, setSelectedTheme] = useState('');
-  // Define the handleThemeSelect function
-  const handleThemeSelect = (theme) => {
-    setSelectedTheme(theme);
+
+  const themePlaceholders = {
+    'Celebration': "Store the memories of celebrations, e.g., B'day, party etc.",
+    'Milestones': "Record key milestones, e.g., graduations, achievements, etc.",
+    'Reflection': "Capture reflective moments, e.g., personal growth, life lessons, etc.",
+    'Tribute': "Pay tribute, e.g., to loved ones, memorable events, etc.",
+    'Union': "Cherish moments of union, e.g., weddings, reunions, etc.",
+    'Wanderlust': "Document your travel adventures and explorations.",
+    'Other': "Enter a custom description for your capsule."
   };
 
-
-  const themes = ["Birthday", "Wedding Anniversary", "Remembrance", "Goal Tracking", "Travel Memories", "Letter to Future Self", "Baby's First Year", "Other"];
-  // Handle file change
+  const handleThemeSelect = (theme) => {
+    setSelectedTheme(theme);
+    setCustomDescription(themePlaceholders[theme]);
+  };
   const onFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile && selectedFile.size <= 20 * 1024 * 1024) {
@@ -32,30 +37,14 @@ function Capsule() {
     }
   };
 
-  // Handle date change
   const onDateChange = (e) => {
     setDate(e.target.value);
   };
 
-  // Handle capsule name change
   const onCapsuleNameChange = (e) => {
     setCapsuleName(e.target.value);
   };
 
-  // Handle theme change
-  const onThemeChange = (e) => {
-    setTheme(e.target.value);
-    if (e.target.value !== 'other') {
-      setCustomDescription('');
-    }
-  };
-
-  // Handle custom description change
-  const onCustomDescriptionChange = (e) => {
-    setCustomDescription(e.target.value);
-  };
-
-  // Create capsule
   const createCapsule = async () => {
     const currentDate = new Date();
     const selectedDate = new Date(date);
@@ -75,7 +64,7 @@ function Capsule() {
         'maturityDate': date,
         'userEmail': auth.currentUser.email,
         'capsuleName': capsuleName,
-        'theme': theme,
+        'theme': selectedTheme,
         'customDescription': customDescription
       }
     };
@@ -97,17 +86,10 @@ function Capsule() {
       <div className='capsule-form'>
         <h1>Create Capsule</h1>
         <input type="text" onChange={onCapsuleNameChange} placeholder="Enter Capsule Name" />
-        <span>Choose a Memory</span>
         <input type="file" onChange={onFileChange} />
-        <span>Select Unlock date</span>
         <input type="date" onChange={onDateChange} />
-  
-        {/* Label for the theme selection */}
-        <span className="theme-label">Hot themes</span>
-  
-        {/* Container for theme options */}
         <div className="theme-selection">
-          {[' Celebration', 'Milestones', 'Reflection', 'Tribute', 'Union','Wanderlust', 'Other'].map((theme) => (
+          {Object.keys(themePlaceholders).map((theme) => (
             <div
               key={theme}
               className={`theme-option ${selectedTheme === theme ? 'selected' : ''}`}
@@ -117,12 +99,28 @@ function Capsule() {
             </div>
           ))}
         </div>
+        {(selectedTheme && selectedTheme !== 'Other') && (
+          <input
+            type="text"
+            value={customDescription}
+            onChange={(e) => setCustomDescription(e.target.value)}
+            placeholder={themePlaceholders[selectedTheme]}
+            disabled
+          />
+        )}
+        {selectedTheme === 'Other' && (
+          <input
+            type="text"
+            value={customDescription}
+            onChange={(e) => setCustomDescription(e.target.value)}
+            placeholder={themePlaceholders[selectedTheme]}
+          />
+        )}
         <button onClick={createCapsule}>Create Capsule</button>
         {error && <div className='error'>{error}</div>}
       </div>
     </div>
   );
-  
 }
 
 export default Capsule;
