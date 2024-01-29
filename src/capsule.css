@@ -5,90 +5,143 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #333; /* Dark background for contrast */
-  color: #f9d342; /* Yellow color for text */
+  background: #6a11cb;  /* Trendy gradient background */
+  background: linear-gradient(160deg, #6a11cb 0%, #2575fc 100%);
+  padding: 20px;
 }
 
 /* The form container */
 .capsule-form {
-  background: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
-  padding: 2rem;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
   width: 100%;
-  max-width: 600px; /* Max width to keep the form contained */
+  max-width: 600px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling the header */
+/* Styling the header with animation */
 .capsule-form-header {
-  font-size: 2.5rem; /* Large font size for the header */
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  position: relative;
+  margin-bottom: 2rem;
   text-align: center;
+  animation: none; /* Remove color shift for a cleaner look */
 }
 
-/* Styling for input fields */
+/* Input fields styling */
 .capsule-form input[type="text"],
 .capsule-form input[type="file"],
 .capsule-form input[type="date"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin: 0.5rem 0;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px auto;
   border-radius: 5px;
-  border: 1px solid #f9d342; /* Yellow border */
-  background: #222; /* Darker background for inputs */
-  color: #f9d342; /* Yellow text color for contrast */
-}
-
-/* Override styles for the file input to make it more attractive */
-.capsule-form input[type="file"] {
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-/* Making the date picker more user-friendly */
-.capsule-form input[type="date"] {
-  cursor: pointer;
-}
-
-/* Styling for the theme options */
-.theme-option {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem; /* Spacing between options */
-  border: 1px solid #f9d342; /* Yellow border */
-  border-radius: 20px; /* Rounded edges for the options */
-  background: none; /* Transparent background */
-  color: #f9d342; /* Yellow text */
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s; /* Smooth transition for hover effect */
-}
-
-/* Highlight the selected theme option */
-.theme-option.selected {
-  background: #f9d342; /* Yellow background for selected option */
-  color: #333; /* Dark text for selected option */
-}
-
-/* The submit button for the form */
-.capsule-form button {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 1rem;
   border: none;
-  border-radius: 5px;
-  background: #f9d342; /* Yellow background */
-  color: #333; /* Dark text */
-  cursor: pointer;
-  transition: opacity 0.3s; /* Smooth transition for hover effect */
+  background: rgba(255, 255, 255, 0.8);
+  color: #6a11cb;
+  font-size: 1rem;
 }
 
-/* Hover effect for the submit button */
+.capsule-form input[type="file"]::file-selector-button,
+.capsule-form input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: none;
+  background-color: #6a11cb;
+  color: #fff;
+  border-radius: 3px;
+}
+
+/* Theme options styling */
+.theme-selection {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+
+.theme-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 20px;
+  background: #6a11cb;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-option.selected {
+  background: #10316b;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
+/* Button styling */
+.capsule-form button {
+  width: auto;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #2575fc;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
 .capsule-form button:hover {
-  opacity: 0.9; /* Slight transparency on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
 }
 
 /* Error message styling */
 .error-message {
-  color: #ff6b6b; /* Red color for error messages */
-  margin-top: 0.5rem; /* Spacing above the error message */
+  color: #ff6b6b;
+  margin-top: 1rem;
   text-align: center;
 }
+/* Responsive Design for small devices like mobile phones */
+@media (max-width: 480px) {
+  .capsule-container {
+    height: auto;
+    min-height: 100vh; /* Make sure it takes at least the viewport height */
+  }
+
+  .capsule-form {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .capsule-form-header {
+    font-size: 1.5rem; /* Smaller text for smaller screens */
+  }
+
+  .theme-selection {
+    flex-direction: row; /* Options next to each other */
+    flex-wrap: wrap; /* Allow wrapping if space runs out */
+    justify-content: center; /* Center options horizontally */
+    align-items: center; /* Align options vertically */
+  }
+
+  .theme-option {
+    width: auto; /* Auto width for flexibility */
+    margin: 5px; /* Add space around options */
+    padding: 5px 10px; /* Padding inside each option */
+  }
+
+  .capsule-form button {
+    padding: 10px 20px;
+  }
+
+  .error-message {
+    font-size: 0.9rem; /* Smaller font size for error messages */
+  }
+}
+
+/* ... other media queries ... */
