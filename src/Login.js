@@ -1,10 +1,9 @@
+import { sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './login.css';
-import { signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { auth } from './firebase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthValue } from './AuthContext';
+import { auth } from './firebase';
+import './login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -34,7 +33,7 @@ function Login() {
   return (
     <div className='center'>
       <div className='auth'>
-        <h1>Log in</h1>
+        <h1>Log in Version 1</h1>
         {error && <div className='auth__error'>{error}</div>}
         <form onSubmit={login} name='login_form'>
           <input 
