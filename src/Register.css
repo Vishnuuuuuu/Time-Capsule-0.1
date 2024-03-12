@@ -1,77 +1,102 @@
-.register-container {
-  position: relative;
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
+  max-height: 100vh; /* Prevents vertical overflow */
+}
+
+.auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-image: url('/public/image/dashbg2.jpg'); /* Add your background image */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-color: aqua; /* Fallback color if the image is not available */
-  /* ... other styles ... */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflow */
+  padding: 20px; /* Adjust padding as necessary */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.register-form {
-  background: black;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+.auth-form {
+  background-color: var(--box-background);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 350px; /* Slightly wider for a better layout */
+  max-width: 400px;
   text-align: center;
-  color: white; /* Dark text for readability */
+  position: relative;
+  z-index: 1;
 }
 
-.register-form h1 {
-  margin-bottom: 20px;
-  color:  white; /* Yellow color for the header */
-  font-weight: bold;
+.auth-form:before {
+  content: "";
+  position: absolute;
+  top: -50px; right: -50px; bottom: -50px; left: -50px;
+  z-index: -1;
+  background: var(--background-gradient);
+  transform: rotateZ(-45deg);
+  transition: opacity var(--transition-speed);
+  opacity: 0.5;
 }
 
-.register-form input[type='email'],
-.register-form input[type='password'] {
-  width: 100%;
-  padding: 12px;
+.auth-form:hover:before {
+  opacity: 1;
+}
+
+.auth-input {
+  width: calc(100% - 20px);
+  padding: 15px;
   margin-bottom: 15px;
-  border: 2px solid #f9d342; /* Yellow border */
-  border-radius: 5px;
-  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.register-form .terms-container {
-  text-align: left;
+.auth-input:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.auth-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.auth-button:hover {
+  background-color: darken(var(--primary-color), 10%);
+  transform: scale(1.05);
+}
+
+.auth-error {
+  color: var(--error-color);
   margin-bottom: 20px;
 }
 
-.register-form .terms-container input[type='checkbox'] {
-  accent-color: #f9d342; /* Yellow accent for checkbox */
+.terms-container {
+  text-align: left;
+  margin: 20px 0;
 }
 
-.register-form .terms-container label {
+.checkbox {
+  accent-color: var(--primary-color);
+}
+
+.checkbox-label {
   margin-left: 5px;
   font-size: 14px;
-  color: white; /* Ensuring readability */
 }
 
-.register-form button {
-  background-color: #f9d342; /* Vibrant yellow button */
-  color: #333; /* Contrasting text color */
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+.auth-link {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
-.register-form button:hover {
-  background-color: #dbba34; /* Darker yellow on hover */
+.auth-link:hover {
+  text-decoration: underline;
 }
-
-.register-error {
-  color: #ff6b6b; /* Red color for error messages */
-  margin-bottom: 1em;
-}
-
-/* Feel free to add more styles as needed */

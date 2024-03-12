@@ -1,62 +1,124 @@
-.center {
-  position: relative;
+:root {
+  --primary-color: #4a67ff;
+  --secondary-color: #a777e3;
+  --background-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --error-color: #ff3860;
+  --box-background: rgba(255, 255, 255, 0.98);
+  --transition-speed: 0.3s;
+  --hover-brightness: 95%;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background-gradient);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-image: url('/public/image/dashbg2.jpg'); /* Add your background image */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-color: aqua; /* Fallback color if the image is not available */
-  /* ... other styles ... */
 }
 
+.login-box {
+  position: relative;
+  z-index: 1;
+  background: var(--box-background);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
 
-  
-  .auth {
-    background: rgb(22, 22, 22);
-  padding: 30px;
+.login-box:before {
+  content: "";
+  position: absolute;
+  top: -50px; right: -50px; bottom: -50px; left: -50px;
+  z-index: -1;
+  background: var(--background-gradient);
+  transform: rotateZ(-45deg);
+  transition: opacity var(--transition-speed);
+  opacity: 0.5;
+}
+
+.login-box:hover:before {
+  opacity: 1;
+}
+
+.login-input, .login-button {
+  border: 0;
+  outline: none;
   border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 350px; /* Slightly wider for a better layout */
-  text-align: center;
-  color: #f5efef; /* Dark text for readability */
-  }
-  
-  .auth h1 {
-    margin-bottom: 20px;
-  color:  white; /* Yellow color for the header */
+  padding: 15px;
+  margin: 10px 0;
+  width: calc(100% - 30px);
+  box-sizing: border-box;
+}
+
+.login-input {
+  background-color: #eee;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.login-input:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.login-button {
+  background: var(--primary-color);
+  color: white;
   font-weight: bold;
-  }
-  
-  .auth input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-  
-    border: 2px solid #f9d342; /* Yellow border */
-  border-radius: 5px;
-  }
-  
-  .auth button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #f9d342;
-    color: rgb(15, 15, 15);
-    cursor: pointer;
-  }
-  
-  .auth button:hover {
-    background-color: #56fc09a6;
-  }
-  
-  .auth__error {
-    color: red;
-    margin-bottom: 15px;
-  }
-  
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.login-button:hover {
+  background: darken(var(--primary-color), 10%);
+  transform: scale(1.05);
+}
+
+.login-error {
+  color: var(--error-color);
+  margin: 10px 0;
+}
+
+/* Background Animation */
+@keyframes moveBackground {
+  0% { background-position: 0 0; }
+  50% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+body {
+  animation: moveBackground 30s infinite linear;
+  background-size: 200% 200%;
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.login-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  position: relative;
+}
+
+.login-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  left: 0;
+  bottom: -3px;
+  transition: transform var(--transition-speed);
+  transform: scale(0);
+  transform-origin: center;
+}
+
+.login-link:hover::after, .login-link:focus::after {
+  transform: scale(1);
+}

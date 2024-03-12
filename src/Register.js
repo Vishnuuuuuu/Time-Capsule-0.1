@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './Register.css'; // Ensure this CSS file exists and is styled as needed
-import { auth } from './firebase';
-import { useNavigate, Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Register.css'; // Make sure this CSS file is updated with new styles
+import { auth } from './firebase';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -35,31 +35,31 @@ function Register() {
   };
 
   return (
-    <div className='register-container'>
-      <div className='register-form'>
+    <div className='auth-container'>
+      <div className='auth-form'>
         <h1>Sign Up</h1>
-        {error && <div className='register-error'>{error}</div>}
+        {error && <div className='auth-error'>{error}</div>}
         <form onSubmit={register}>
           <input
             type='email'
             value={email}
             placeholder='Email'
-            required
             onChange={(e) => setEmail(e.target.value)}
+            className='auth-input'
           />
           <input
             type='password'
             value={password}
             placeholder='Password'
-            required
             onChange={(e) => setPassword(e.target.value)}
+            className='auth-input'
           />
           <input
             type='password'
             value={confirmPassword}
             placeholder='Confirm Password'
-            required
             onChange={(e) => setConfirmPassword(e.target.value)}
+            className='auth-input'
           />
           <div className='terms-container'>
             <input
@@ -67,15 +67,16 @@ function Register() {
               id='acceptTerms'
               checked={acceptTerms}
               onChange={(e) => setAcceptTerms(e.target.checked)}
+              className='checkbox'
             />
-            <label htmlFor='acceptTerms'>
-              I agree to the <Link to='/terms'>Terms and Conditions</Link>
+            <label htmlFor='acceptTerms' className='checkbox-label'>
+              I agree to the <Link to='/terms' className='auth-link'>Terms and Conditions</Link>
             </label>
           </div>
-          <button type='submit' disabled={!acceptTerms}>Register</button>
+          <button type='submit' disabled={!acceptTerms} className='auth-button'>Register</button>
         </form>
         <p>
-          Already have an account? <Link to='/login'>Login</Link>
+          Already have an account? <Link to='/login' className='auth-link'>Login</Link>
         </p>
       </div>
     </div>
